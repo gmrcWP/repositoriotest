@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Titulo</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>MiPagina</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Simple. Clean. Modern.</h2>
+    <p>
+      This is a minimalist page with a bit more structure. Clean layout,
+      subtle animations, and just enough interaction to feel alive.
+    </p>
+
+    <button id="btn">Click</button>
+  </main>
+
+  <footer>
+    © 2026 Minimal UI
+  </footer>
+
+  <script>
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click", function (e) {
+      const ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+
+      const rect = this.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + "px";
+      ripple.style.top = (e.clientY - rect.top) + "px";
+
+      this.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 600);
+    });
+  </script>
+
+</body>
+
+</html>
