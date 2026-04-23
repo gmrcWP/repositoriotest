@@ -19,11 +19,24 @@
   </header>
 
   <main>
-    <h2>Simple. Clean. Modern.</h2>
-    <p>
-      This is a minimalist page with a bit more structure. Clean layout,
-      subtle animations, and just enough interaction to feel alive.
-    </p>
+
+    <!-- Sección de la Materia -->
+    <section class="class-info">
+      <span class="badge">Proyecto de Clase</span>
+      <h3>Taller de Aplicaciones en Internet</h3>
+      <p>Este trabajo explora el desarrollo de interfaces modernas utilizando tecnologías web estándar, enfocado en la usabilidad y el diseño responsivo.</p>
+    </section>
+
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="carousel-slide"><img src="https://loremflickr.com/800/450/coding,technology?lock=1" alt="Software Development"></div>
+        <div class="carousel-slide"><img src="https://loremflickr.com/800/450/server,data?lock=2" alt="Server Infrastructure"></div>
+        <div class="carousel-slide"><img src="https://loremflickr.com/800/450/artificialintelligence,circuit?lock=3" alt="Digital Future"></div>
+      </div>
+      <button class="carousel-prev" id="prev">❮</button>
+      <button class="carousel-next" id="next">❯</button>
+    </div>
 
     <button id="btn">Click</button>
   </main>
@@ -74,6 +87,32 @@
 
       setTimeout(() => ripple.remove(), 600);
     });
+
+    // Carousel Logic
+    const carousel = document.getElementById("carousel");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % 3;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + 3) % 3;
+      updateCarousel();
+    });
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % 3;
+      updateCarousel();
+    }, 5000);
   </script>
 
 </body>
